@@ -15,7 +15,9 @@ app.config['MQTT_USERNAME'] = 'tester2-tesingdev2-v3_3220'
 app.config['MQTT_PASSWORD'] = '1572435365_3220'
 app.config['MQTT_KEEPALIVE'] = 5
 app.config['MQTT_TLS_ENABLED'] = False
-
+# app.config['MQTT_LAST_WILL_TOPIC'] = 'tester2/tesingdev2/v3/common'
+# app.config['MQTT_LAST_WILL_MESSAGE'] = 'bye'
+app.config['MQTT_LAST_WILL_QOS'] = 2
 
 # app.config.from_pyfile('mqttConfiguration.cfg')
 
@@ -23,30 +25,40 @@ mqtt = Mqtt(app)
 socketIo = SocketIO(app)
 
 
+# define PUB_TOPIC           "tester2/tesingdev2/v3/common"
+# define SUB_TOPIC           "sub/1119/tester2/tesingdev2/v3/pub"
+
+pubTopic = "tester2/tesingdev2/v3/common"
+subTopic = "sub/1119/tester2/tesingdev2/v3/pub"
+
+
 @app.route('/')
 def index():
-    return render_template('sample.html')
+    return render_template('Test.html')
 
 
-@mqtt.on_connect()
-def handle_connect(client, userdata, flags, rc):
-    mqtt.subscribe('tester2/tesingdev2/v3/common')
-
-# @socketIo.on('publish')
-# def handle_publish(json_str):
-#     data = json.loads(json_str)
-#     mqtt.publish(data['topic'], data['message'])
-
-
-# @socketIo.on('subscribe')
-# def handle_subscribe(json_str):
-#     data = json.loads(json_str)
+# @mqtt.on_connect()
+# def handle_connect(client, userdata, flags, rc):
+#     # mqtt.subscribe('#')
 #     mqtt.subscribe('tester2/tesingdev2/v3/common')
 
 
-# @socketIo.on('unsubscribe_all')
-# def handle_unsubscribe_all():
-#     mqtt.unsubscribe_all()
+@socketIo.on('publish')
+def handle_publish(json_str):
+    data = json.loads(json_str)
+    # mqtt.publish(data['topic'], data['message'])
+    mqtt.publish(subTopic, data['message'])
+
+
+@socketIo.on('subscribe')
+def handle_subscribe(json_str):
+    data = json.loads(json_str)
+    mqtt.subscribe(pubTopic, data['qos'])
+
+
+@socketIo.on('unsubscribe_all')
+def handle_unsubscribe_all():
+    mqtt.unsubscribe_all()
 
 
 @mqtt.on_message()
@@ -65,7 +77,6 @@ def handle_mqtt_message(client, userdata, message):
 @mqtt.on_log()
 def handle_logging(client, userdata, level, buf):
     print(level, buf)
-
 
 # if __name__ == '__main__':
 #     socketIo.run(app, host='localhost', port=5000, use_reloader=False, debug=True)

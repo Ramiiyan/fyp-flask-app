@@ -19,9 +19,10 @@
     // when a new message is received, log and append the data to the page
             socket.on('mqtt_message', function(data) {
                 console.log(data);
-                var text = '(' + data['topic'] + ' qos: ' + data['qos'] + ') ' + data['payload'];
+                var text = '(' + data['topic'] + ' qos: ' + data['qos'] + ') : ' + data['payload'];
                 $('#subscribe_messages').append(text + '<br><br>');
             })
+
         });
     </script>
 </html>
