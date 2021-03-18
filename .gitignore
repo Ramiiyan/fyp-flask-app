@@ -1,0 +1,6 @@
+# local env files
+env
+
+# Editor directories and files
+.idea
+__pycache__

@@ -1,65 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4d4d734-ae50-4f62-8730-9ff40b264e32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Rami.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_SocketIO-5.0.1.dist-info/INSTALLER" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_SocketIO-5.0.1.dist-info/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_SocketIO-5.0.1.dist-info/METADATA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_SocketIO-5.0.1.dist-info/RECORD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_SocketIO-5.0.1.dist-info/REQUESTED" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_SocketIO-5.0.1.dist-info/WHEEL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_SocketIO-5.0.1.dist-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_socketio/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/flask_socketio/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_socketio/namespace.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/flask_socketio/namespace.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_socketio/test_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/flask_socketio/test_client.py" afterDir="false" />
-    </list>
+    <list default="true" id="2c5b41c3-b9bb-4301-a919-aadc97254723" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="flask-socket-test-app" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectId" id="1pAVBL8BcDc2qdTc9SdfXdpV99X" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1pccw2x8OtJSYqob16WcmIvphOC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../flask-socket-test-app" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/firmwareTemplates" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\MY FYP Local - Backend\fyp-flask-app\templates" />
-      <recent name="D:\MY FYP Local - Backend\fyp-flask-app" />
-      <recent name="D:\MY FYP Local - Backend\fyp-flask-app\views" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\MY FYP Local - Backend\flask-socket-test-app\firmwareTemplates" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.firmwareGenerator">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="fyp-flask-app" />
+      <module name="flask-socket-test-app" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -80,8 +58,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="firmwareGenerator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="flask-socket-test-app" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/firmwareGenerator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.firmwareGenerator" />
         <item itemvalue="Python.app" />
       </list>
     </recent_temporary>
@@ -91,22 +92,16 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d4d4d734-ae50-4f62-8730-9ff40b264e32" name="Default Changelist" comment="" />
-      <created>1614625744617</created>
+      <changelist id="2c5b41c3-b9bb-4301-a919-aadc97254723" name="Default Changelist" comment="" />
+      <created>1615486053985</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1614625744617</updated>
-      <workItem from="1614625746894" duration="9449000" />
-      <workItem from="1614675131211" duration="1310000" />
-      <workItem from="1614765736149" duration="12897000" />
-      <workItem from="1614837417160" duration="1783000" />
-      <workItem from="1615020712226" duration="12868000" />
-      <workItem from="1615112231441" duration="21457000" />
-      <workItem from="1615195727519" duration="9175000" />
-      <workItem from="1615294776246" duration="5782000" />
-      <workItem from="1615375584948" duration="21245000" />
-      <workItem from="1615420113701" duration="1427000" />
-      <workItem from="1615465698464" duration="12210000" />
+      <updated>1615486053985</updated>
+      <workItem from="1615486058104" duration="11923000" />
+      <workItem from="1615798086553" duration="5701000" />
+      <workItem from="1615880617689" duration="494000" />
+      <workItem from="1615892569383" duration="15351000" />
+      <workItem from="1615976838390" duration="18291000" />
     </task>
     <servers />
   </component>
@@ -114,40 +109,33 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="650" y="151" key="FileChooserDialogImpl" timestamp="1615486052017">
+    <state x="883" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1615808811569">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="650" y="151" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1615486052017" />
-    <state width="1493" height="109" key="GridCell.Tab.0.bottom" timestamp="1615487617744">
+    <state x="883" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615808811569" />
+    <state width="1493" height="152" key="GridCell.Tab.0.bottom" timestamp="1616065114534">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="109" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615487617744" />
-    <state width="1493" height="109" key="GridCell.Tab.0.center" timestamp="1615487617744">
+    <state width="1493" height="152" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616065114534" />
+    <state width="1493" height="152" key="GridCell.Tab.0.center" timestamp="1616065114533">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="109" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1615487617744" />
-    <state width="1493" height="109" key="GridCell.Tab.0.left" timestamp="1615487617744">
+    <state width="1493" height="152" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1616065114533" />
+    <state width="1493" height="152" key="GridCell.Tab.0.left" timestamp="1616065114533">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="109" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1615487617744" />
-    <state width="1493" height="109" key="GridCell.Tab.0.right" timestamp="1615487617744">
+    <state width="1493" height="152" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1616065114533" />
+    <state width="1493" height="152" key="GridCell.Tab.0.right" timestamp="1616065114534">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="109" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1615487617744" />
-    <state x="555" y="57" key="SettingsEditor" timestamp="1614631138846">
+    <state width="1493" height="152" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1616065114534" />
+    <state x="877" y="320" key="com.intellij.ide.util.TipDialog" timestamp="1615977142979">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="555" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1614631138846" />
-    <state x="88" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1615465923803">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="88" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1615465923803" />
-    <state x="809" y="72" width="670" height="676" key="search.everywhere.popup" timestamp="1614629172815">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="809" y="72" width="670" height="676" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1614629172815" />
+    <state x="877" y="320" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1615977142979" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/fyp_flask_app$app.coverage" NAME="app Coverage Results" MODIFIED="1615483819172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/flask_socket_test_app$firmwareGenerator.coverage" NAME="firmwareGenerator Coverage Results" MODIFIED="1616065114520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/flask_socket_test_app$app.coverage" NAME="app Coverage Results" MODIFIED="1615499980681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/fyp-flask-app.iml" filepath="$PROJECT_DIR$/.idea/fyp-flask-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/flask-socket-test-app.iml" filepath="$PROJECT_DIR$/.idea/flask-socket-test-app.iml" />
     </modules>
   </component>
 </project>
