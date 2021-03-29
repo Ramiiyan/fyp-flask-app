@@ -10,6 +10,9 @@ const byte servo_DPins[SERVO_COUNT] = {{Dpin_list}}; //by Default
 // Wroom ESP32 Servo-motor Feedback Analog Pins
 const int servo_APins[SERVO_COUNT] = {{Apin_list}};
 
+//int array1[ rows-2 ][ columns-3 ] = { { 1, 2, 3 }, { 4, 5, 6 } }; EXAMPLE.
+const int servo_range [SERVO_COUNT] [2] = {{0,180}};
+
 //initiate Servo Motors
 ServoMotor *servo_list[SERVO_COUNT];
 

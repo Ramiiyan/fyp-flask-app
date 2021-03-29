@@ -21,7 +21,7 @@ map_of_spec_val = {
     "sim_network_setting": {
         "network_mode": 13,  # 13-GSM (default) , 38-Nb-IoT
         "gprs_setting": {
-            "APN_mode": "dialogbb",  # GSM-dialogbb (default) , NB-nbiot
+            "APN_mode": "dialtogbb",  # GSM-dialogbb (default) , NB-nbiot
             "username": "",
             "password": ""
         }

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c5b41c3-b9bb-4301-a919-aadc97254723" name="Default Changelist" comment="" />
+    <list default="true" id="2c5b41c3-b9bb-4301-a919-aadc97254723" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmwareGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/firmwareGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmwareTemplates/ServoReadHardwareTrial_ESP32_multiservo_SimModule/ServoReadHardwareTrial_ESP32_multiservo_SimModule.ino" beforeDir="false" afterPath="$PROJECT_DIR$/firmwareTemplates/ServoReadHardwareTrial_ESP32_multiservo_SimModule/ServoReadHardwareTrial_ESP32_multiservo_SimModule.ino" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +24,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1pccw2x8OtJSYqob16WcmIvphOC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -29,13 +38,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/firmwareTemplates" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\MY FYP Local - Backend\flask-socket-test-app\firmwareTemplates" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.firmwareGenerator">
+  <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="flask-socket-test-app" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -43,9 +53,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="D:\MY FYP Local - Backend\fyp-flask-app\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -82,8 +92,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.firmwareGenerator" />
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.firmwareGenerator" />
       </list>
     </recent_temporary>
   </component>
@@ -102,6 +112,12 @@
       <workItem from="1615880617689" duration="494000" />
       <workItem from="1615892569383" duration="15351000" />
       <workItem from="1615976838390" duration="18291000" />
+      <workItem from="1616106413541" duration="517000" />
+      <workItem from="1616106963965" duration="177000" />
+      <workItem from="1616107192465" duration="526000" />
+      <workItem from="1616175705494" duration="4333000" />
+      <workItem from="1616244723043" duration="3263000" />
+      <workItem from="1616937666731" duration="4538000" />
     </task>
     <servers />
   </component>
@@ -109,33 +125,67 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="496" y="26" key="#app" timestamp="1616107230595">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="496" y="26" key="#app/0.0.1536.824@0.0.1536.824" timestamp="1616107230595" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1616107118168">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1616107118168" />
     <state x="883" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1615808811569">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="883" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615808811569" />
-    <state width="1493" height="152" key="GridCell.Tab.0.bottom" timestamp="1616065114534">
+    <state x="503" y="173" key="EnvironmentVariablesDialog" timestamp="1616106915942">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="152" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616065114534" />
-    <state width="1493" height="152" key="GridCell.Tab.0.center" timestamp="1616065114533">
+    <state x="503" y="173" key="EnvironmentVariablesDialog/0.0.1536.824@0.0.1536.824" timestamp="1616106915942" />
+    <state width="1493" height="260" key="GridCell.Tab.0.bottom" timestamp="1616193691378">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="152" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1616065114533" />
-    <state width="1493" height="152" key="GridCell.Tab.0.left" timestamp="1616065114533">
+    <state width="1493" height="260" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616193691378" />
+    <state width="1493" height="260" key="GridCell.Tab.0.center" timestamp="1616193691378">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="152" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1616065114533" />
-    <state width="1493" height="152" key="GridCell.Tab.0.right" timestamp="1616065114534">
+    <state width="1493" height="260" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1616193691378" />
+    <state width="1493" height="260" key="GridCell.Tab.0.left" timestamp="1616193691378">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="152" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1616065114534" />
-    <state x="877" y="320" key="com.intellij.ide.util.TipDialog" timestamp="1615977142979">
+    <state width="1493" height="260" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1616193691378" />
+    <state width="1493" height="260" key="GridCell.Tab.0.right" timestamp="1616193691378">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="877" y="320" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1615977142979" />
+    <state width="1493" height="260" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1616193691378" />
+    <state width="1493" height="260" key="GridCell.Tab.1.bottom" timestamp="1616193691378">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="260" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616193691378" />
+    <state width="1493" height="260" key="GridCell.Tab.1.center" timestamp="1616193691378">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="260" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1616193691378" />
+    <state width="1493" height="260" key="GridCell.Tab.1.left" timestamp="1616193691378">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="260" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1616193691378" />
+    <state width="1493" height="260" key="GridCell.Tab.1.right" timestamp="1616193691378">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="260" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1616193691378" />
+    <state x="277" y="54" key="SettingsEditor" timestamp="1616107305779">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1616107305779" />
+    <state x="877" y="320" key="com.intellij.ide.util.TipDialog" timestamp="1616937902659">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="877" y="320" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1616937902659" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/flask_socket_test_app$firmwareGenerator.coverage" NAME="firmwareGenerator Coverage Results" MODIFIED="1616065114520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/fyp_flask_app$firmwareGenerator.coverage" NAME="firmwareGenerator Coverage Results" MODIFIED="1616107424200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/fyp_flask_app$app.coverage" NAME="app Coverage Results" MODIFIED="1616193588984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/flask_socket_test_app$app.coverage" NAME="app Coverage Results" MODIFIED="1615499980681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
