@@ -1,10 +1,11 @@
-
-from flask import Flask, render_template,request
+from flask import Flask, render_template, request, json
 from flask.json import jsonify
 from engineio.payload import Payload
 from flask_socketio import SocketIO, emit
 from flask_mqtt import Mqtt
 from flask_cors import CORS
+
+from Models.RobotModel import RoboticArm, Servo, ServoRange, Wifi
 
 
 app = Flask(__name__)
@@ -33,6 +34,20 @@ subTopicMqtt = "sub/1119/tester2/tesingdev2/v3/pub"  # Publish topic for server
 @app.route('/rovoSpec', methods=['POST'])
 def specification():
     print(request.get_json())
+    robot_model = RoboticArm.json_to_obj(request.get_json())
+
+    servo = Servo.json_to_obj(robot_model.dof_row_obj)
+    print(servo.selected_type)
+    print(servo.servo_range)
+    print("********************************")
+
+    servo_range = ServoRange.json_to_obj(servo.servo_range)
+    print(servo_range.min_range)
+    print(servo_range.max_range)
+    print("********************************")
+
+    wifi = Wifi.json_to_obj(robot_model.wifi)
+    print(wifi.username)
 
     return "this is flask reply!"
 
