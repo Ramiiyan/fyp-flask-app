@@ -39,12 +39,12 @@ def specification():
     servo = Servo.json_to_obj(robot_model.dof_row_obj)
     print(servo.selected_type)
     print(servo.servo_range)
-    print("********************************")
+    print("***************************")
 
     servo_range = ServoRange.json_to_obj(servo.servo_range)
     print(servo_range.min_range)
     print(servo_range.max_range)
-    print("********************************")
+    print("***************************")
 
     wifi = Wifi.json_to_obj(robot_model.wifi)
     print(wifi.username)
