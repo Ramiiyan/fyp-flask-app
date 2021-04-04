@@ -1,10 +1,14 @@
-from flask import Flask, render_template
+
+from flask import Flask, render_template,request
+from flask.json import jsonify
 from engineio.payload import Payload
 from flask_socketio import SocketIO, emit
 from flask_mqtt import Mqtt
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['SECRET'] = 'mysecretkeydkjasndjkasndkjoejigtoinfijsdfubyievyibdw'
 app.config['MQTT_BROKER_URL'] = 'mqtt.iot.ideamart.io'
@@ -24,6 +28,13 @@ subTopicMqtt = "sub/1119/tester2/tesingdev2/v3/pub"  # Publish topic for server
 # @app.route('/')
 # def index():
 #     return render_template('test1.html')
+
+
+@app.route('/rovoSpec', methods=['POST'])
+def specification():
+    print(request.get_json())
+
+    return "this is flask reply!"
 
 
 @mqtt.on_connect()
