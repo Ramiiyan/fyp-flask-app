@@ -20,8 +20,11 @@ class ServoMotor {
     ServoMotor();
     ServoMotor(byte servo_DIOpin, int servo_AIpin);
     void init();
-    void calibrate_Range();
+    void switch_To_control();
+    void switch_To_monitor();
+    void calibrate_Range(int d_of_min, int d_of_max);
     long cur_Pos();
+    void control(int pos);
     
 };
 
