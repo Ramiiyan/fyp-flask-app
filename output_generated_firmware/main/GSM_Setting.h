@@ -5,18 +5,18 @@
 
 #include "ServoMotor.h"
 
-#define PUB_TOPIC           {{mqtt_setting.pub_topic}}      // "tester2/tesingdev2/v3/common"
-#define SUB_TOPIC           {{mqtt_setting.sub_topic}}      // "sub/1119/tester2/tesingdev2/v3/pub"
+#define PUB_TOPIC           "tester2/tesingdev2/v3/common"      // "tester2/tesingdev2/v3/common"
+#define SUB_TOPIC           "sub/1119/tester2/tesingdev2/v3/pub"      // "sub/1119/tester2/tesingdev2/v3/pub"
 
-#define MQTT_USERNAME       {{mqtt_setting.mqtt_username}}  // "tester2-tesingdev2-v3_3220"
-#define MQTT_PASSWORD       {{mqtt_setting.mqtt_password}}  // "1572435365_3220"
-#define MQTT_HOST           {{mqtt_setting.mqtt_host}}      // "mqtt.iot.ideamart.io"
-#define MQTT_PORT           {{mqtt_setting.mqtt_port}}      // 1883
+#define MQTT_USERNAME       "tester2-tesingdev2-v3_3220"  // "tester2-tesingdev2-v3_3220"
+#define MQTT_PASSWORD       "1572435365_3220"  // "1572435365_3220"
+#define MQTT_HOST           "mqtt.iot.ideamart.io"      // "mqtt.iot.ideamart.io"
+#define MQTT_PORT           1883      // 1883
 
-#define BAUD_RATE           {{serial_setting.baud_rate}}          // 115200
-#define SIM_BAUD_RATE       {{serial_setting.sim_module}}         // 9600
-#define TXD                 {{serial_setting.sim_module_Txd}}     // 16    //TXD
-#define RXD                 {{serial_setting.sim_module_Rxd}}     // 17    //RXD
+#define BAUD_RATE           115200          // 115200
+#define SIM_BAUD_RATE       9600         // 9600
+#define TXD                 16     // 16    //TXD
+#define RXD                 17     // 17    //RXD
 
 #define GSM_APN             "dialogbb"
 #define NB_APN              "nbiot"
