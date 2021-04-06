@@ -5,7 +5,7 @@ from jinja2 import Template, Environment, FileSystemLoader
 
 original_file_path = 'firmwareTemplates/ServoReadHardwareTrial_ESP32_multiservo_SimModule' \
                  '/MainTemplate.h'
-generate_file_path = 'output_generated_firmware/main/MainTemplate.h'
+generate_file_path = 'output_generated_firmware/firmware_v1.0/main/MainTemplate.h'
 
 # select the template
 src = 'firmwareTemplates/ServoReadHardwareTrial_ESP32_multiservo_SimModule'
@@ -16,7 +16,7 @@ for file_name in src_files:
     full_file_name = os.path.join(src, file_name)
     if os.path.isfile(full_file_name):
         shutil.copy(full_file_name, dest)
-if os.path.isfile('output_generated_firmware/main/main.ino'):
+if os.path.isfile('output_generated_firmware/firmware_v1.0/main/main.ino'):
     os.remove(r''+dest+'/ServoReadHardwareTrial_ESP32_multiservo_SimModule.ino')
 else:
     os.rename(r''+dest+'/ServoReadHardwareTrial_ESP32_multiservo_SimModule.ino', r''+dest+'/main.ino')

@@ -1,9 +1,15 @@
-from flask import Flask, render_template, request, json
+
+import io
+from zipfile import ZipFile
+import os
+import shutil
+from flask import Flask, render_template, request, json, send_file
 from flask.json import jsonify
 from engineio.payload import Payload
 from flask_socketio import SocketIO, emit
 from flask_mqtt import Mqtt
 from flask_cors import CORS
+
 
 from Models.RobotModel import RoboticArm, Servo, ServoRange, Wifi
 
@@ -49,7 +55,12 @@ def specification():
     wifi = Wifi.json_to_obj(robot_model.wifi)
     print(wifi.username)
 
-    return "this is flask reply!"
+    generated_package = "output_generated_firmware/firmware_v1.0"
+    shutil.make_archive("output_zip/firmware_v1.0", 'zip', generated_package)
+    f = open('output_zip/firmware_v1.0.zip', 'rb')
+    return f.read()
+    # return send_file(zipObj, mimetype='application/zip', as_attachment=True, attachment_filename="test.zip")
+    # return
 
 
 @mqtt.on_connect()
