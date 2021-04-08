@@ -1,5 +1,6 @@
-#define SERVO_COUNT   {{servo_count_dof}} // based on robotic arm type
 #include <ArduinoJson.h> //json decoder
+
+#define SERVO_COUNT   {{servo_count_dof}} // based on robotic arm type
 /* Wroom ESP32 Servo-motor Control Digital Pins */
 const byte servo_DPins[SERVO_COUNT] = {{Dpin_list}}; //  12,26,32,18,22,14
 

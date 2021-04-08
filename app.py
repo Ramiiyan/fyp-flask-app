@@ -1,7 +1,6 @@
-
-import io
-from zipfile import ZipFile
-import os
+# import io
+# from zipfile import ZipFile
+# import os
 import shutil
 from flask import Flask, render_template, request, json, send_file
 from flask.json import jsonify
@@ -10,9 +9,9 @@ from flask_socketio import SocketIO, emit
 from flask_mqtt import Mqtt
 from flask_cors import CORS
 
+import firmwareGenerator
 
-from Models.RobotModel import RoboticArm, Servo, ServoRange, Wifi
-
+from Models.RobotModel import RoboticArm, Servo, ServoRange, Wifi, MqttConfig
 
 app = Flask(__name__)
 CORS(app)
@@ -32,35 +31,52 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 pubTopicMqtt = "tester2/tesingdev2/v3/common"   # Subscribe topic for server
 subTopicMqtt = "sub/1119/tester2/tesingdev2/v3/pub"  # Publish topic for server
 
-# @app.route('/')
-# def index():
-#     return render_template('test1.html')
-
 
 @app.route('/rovoSpec', methods=['POST'])
 def specification():
-    print(request.get_json())
+    # select firmware based on microController type & connectivity module
+    src = 'firmwareTemplates/ServoReadHardwareTrial_ESP32_multiservo_SimModule'
+    dest = 'output_generated_firmware/firmware_v1.0/main'
+    firmwareGenerator.select_template(src, dest)
+
+    print(f'Raw data: {request.get_json()}')
     robot_model = RoboticArm.json_to_obj(request.get_json())
-
+    print(f'DOF: {robot_model.dof}')
+    print("***************************")
     servo = Servo.json_to_obj(robot_model.dof_row_obj)
-    print(servo.selected_type)
-    print(servo.servo_range)
+    print(f'servoType: {servo.selected_type}')
     print("***************************")
-
     servo_range = ServoRange.json_to_obj(servo.servo_range)
-    print(servo_range.min_range)
-    print(servo_range.max_range)
+    print(f'servo_range_format: {servo_range}')
     print("***************************")
-
     wifi = Wifi.json_to_obj(robot_model.wifi)
-    print(wifi.username)
+    print(f'Wifi username:{wifi.username}')
+    print("***************************")
+    mqtt_config = MqttConfig.json_to_obj(robot_model.mqtt_config)
 
+    # Fetch data to template
+    firmwareGenerator.map_of_spec_val["servo_count_dof"] = robot_model.dof
+    firmwareGenerator.map_of_spec_val["servo_range_list"] = servo_range
+    if robot_model.mqtt_default:
+        firmwareGenerator.map_of_spec_val["mqtt_setting"] = firmwareGenerator.map_of_spec_val["mqtt_setting"]
+    else:
+        firmwareGenerator.map_of_spec_val["mqtt_setting"]["mqtt_host"] = str(mqtt_config.host)
+        firmwareGenerator.map_of_spec_val["mqtt_setting"]["mqtt_port"] = str(mqtt_config.port)
+        firmwareGenerator.map_of_spec_val["mqtt_setting"]["mqtt_username"] = str(mqtt_config.username)
+        firmwareGenerator.map_of_spec_val["mqtt_setting"]["mqtt_password"] = str(mqtt_config.password)
+        firmwareGenerator.map_of_spec_val["mqtt_setting"]["pub_topic"] = str(mqtt_config.pub_topic)
+        firmwareGenerator.map_of_spec_val["mqtt_setting"]["sub_topic"] = str(mqtt_config.sub_topic)
+        print(firmwareGenerator.map_of_spec_val["mqtt_setting"])
+    # print("robot:" + str(robot_model.dof))
+    # print("dict val:" + str(firmwareGenerator.map_of_spec_val["servo_count_dof"]))
+
+    # Generate firmware
+    firmwareGenerator.generate_firmware()
+    # Generate zip
     generated_package = "output_generated_firmware/firmware_v1.0"
     shutil.make_archive("output_zip/firmware_v1.0", 'zip', generated_package)
     f = open('output_zip/firmware_v1.0.zip', 'rb')
-    return f.read()
-    # return send_file(zipObj, mimetype='application/zip', as_attachment=True, attachment_filename="test.zip")
-    # return
+    return "hello"
 
 
 @mqtt.on_connect()
