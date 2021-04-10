@@ -76,7 +76,7 @@ def specification():
     generated_package = "output_generated_firmware/firmware_v1.0"
     shutil.make_archive("output_zip/firmware_v1.0", 'zip', generated_package)
     f = open('output_zip/firmware_v1.0.zip', 'rb')
-    return "hello"
+    return f.read()
 
 
 @mqtt.on_connect()
@@ -95,7 +95,7 @@ def handle_connect(client, userdata, flags, rc):
 
 @socketio.on('connect')
 def test_connect():
-    emit('connect_socket', "I'm server, Socket Connected")
+    emit('connect_socket', "Msg From server, Socket Connected")
     print('IN CONNECT >>>>')
 
 
@@ -118,7 +118,7 @@ def test_disconnect():
 def handle_mqtt_message(client, userdata, message):
     data = dict(
         topic=message.topic,
-        payload=message.payload.decode()
+        payload=json.loads(message.payload.decode())
     )
     print("my MSG : " + message.payload.decode())
     # emit a mqtt_message event to the socket containing the message data
