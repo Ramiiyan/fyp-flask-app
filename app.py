@@ -30,6 +30,8 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 pubTopicMqtt = "tester2/tesingdev2/v3/common"   # Subscribe topic for server
 subTopicMqtt = "sub/1119/tester2/tesingdev2/v3/pub"  # Publish topic for server
+d_pin = [12, 26, 32, 14, 18, 22]  # Default digital pins for esp32
+a_pin = [13, 27, 33, 25, 19, 23]  # Default analog pins for esp32
 
 
 @app.route('/rovoSpec', methods=['POST'])
@@ -56,6 +58,13 @@ def specification():
 
     # Fetch data to template
     firmwareGenerator.map_of_spec_val["servo_count_dof"] = robot_model.dof
+    # "Dpin_list": "{12, 26, 32, 14}",  # default
+    # "Apin_list": "{13, 27, 33, 25}",  # default
+    print(f'Selected D_pins: {d_pin[:robot_model.dof]}')
+    print(f'Selected A_pins: {a_pin[:robot_model.dof]}')
+    firmwareGenerator.map_of_spec_val["Dpin_list"] = f'{{{str(d_pin[:robot_model.dof])[1:-1]}}}'
+    firmwareGenerator.map_of_spec_val["Apin_list"] = f'{{{str(a_pin[:robot_model.dof])[1:-1]}}}'
+
     firmwareGenerator.map_of_spec_val["servo_range_list"] = servo_range
     if robot_model.mqtt_default:
         firmwareGenerator.map_of_spec_val["mqtt_setting"] = firmwareGenerator.map_of_spec_val["mqtt_setting"]
@@ -94,7 +103,7 @@ def handle_connect(client, userdata, flags, rc):
 
 
 @socketio.on('connect')
-def test_connect():
+def init_connect():
     emit('connect_socket', "Msg From server, Socket Connected")
     print('IN CONNECT >>>>')
 
@@ -108,7 +117,7 @@ def test_message(message):
 
 
 @socketio.on('unSubscribe_all')
-def test_disconnect():
+def sub_disconnect():
     print('IN DISCONNECT >>>>')
     print('Client disconnected')
     mqtt.unsubscribe_all()

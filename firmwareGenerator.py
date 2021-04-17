@@ -4,10 +4,11 @@ from jinja2 import Template, Environment, FileSystemLoader
 import app
 from Models.RobotModel import RoboticArm, Servo, ServoRange, Wifi
 
-# select the template
+# selection the template
 # src = 'firmwareTemplates/ServoReadHardwareTrial_ESP32_multiservo_SimModule' # change to app.py
 dest = 'output_generated_firmware/firmware_v1.0/main'  # change to app.py
 
+# Data structure of specification values and default values.
 map_of_spec_val = {
     "servo_count_dof": 4,
     "Dpin_list": "{12, 26, 32, 14}",  # default
@@ -20,14 +21,7 @@ map_of_spec_val = {
         "sim_module_Txd": 16,  # IN ESP32 RX pin
         "sim_module_Rxd": 17,  # IN ESP32 TX pin
     },
-    "sim_network_setting": {
-        "network_mode": 13,  # 13-GSM (default) , 38-Nb-IoT
-        "gprs_setting": {
-            "APN_mode": "dialogbb",  # GSM-dialogbb (default) , NB-nbiot
-            "username": "",
-            "password": ""
-        }
-    },
+    # Default mqtt credentials
     "mqtt_setting": {
         "mqtt_host": '"mqtt.iot.ideamart.io"',
         "mqtt_port": 1883,
@@ -36,6 +30,20 @@ map_of_spec_val = {
         "pub_topic": '"tester2/tesingdev2/v3/common"',
         "sub_topic": '"sub/1119/tester2/tesingdev2/v3/pub"',
     },
+    # Only for Cellular communication
+    "sim_network_setting": {
+        "network_mode": 13,  # 13-GSM (default) , 38-Nb-IoT
+        "gprs_setting": {
+            "APN_mode": "dialogbb",  # GSM-dialogbb (default) , NB-nbiot
+            "username": "",
+            "password": ""
+        }
+    },
+    # Only for Wifi communication module
+    "wifi_setting": {
+        "username": '"wifi_username"',
+        "password": '"wifi_password"',
+    }
 }
 
 
@@ -56,14 +64,20 @@ def select_template(template_src, generate_dest):
 
 def generate_firmware():
     print(map_of_spec_val["servo_count_dof"])
+    print(map_of_spec_val["Dpin_list"])
+    print(map_of_spec_val["Apin_list"])
+    # load the firmware template
     loader = FileSystemLoader(dest)
     env = Environment(loader=loader)
 
-    template_headers = ["MainTemplate.h", "GSM_Setting.h"]  # files that have changes.
+    # header files of the firmware structure.
+    template_headers = ["MainTemplate.h", "GSM_Setting.h"]
+    # assign rendered specification to firmware template
     for template in template_headers:
         firmware_template_main = env.get_template(template)
         rendered_file = firmware_template_main.render(map_of_spec_val)
 
         # print(rendered_file)
+        # write the firmware into destination file
         with open(dest + '/' + template, 'w+') as gen_firmware:
             gen_firmware.write(rendered_file)

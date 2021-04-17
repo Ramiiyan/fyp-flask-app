@@ -18,6 +18,7 @@ class RoboticArm:
         return f'<RA model {self.micro_c}>'
 
 
+# dof_row_obj
 class Servo:
     def __init__(self, selected_type, servo_range):
 
