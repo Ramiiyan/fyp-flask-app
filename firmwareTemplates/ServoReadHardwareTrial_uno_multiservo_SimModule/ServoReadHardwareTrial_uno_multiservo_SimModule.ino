@@ -1,5 +1,5 @@
 #include "ServoMotor.h" // custom library header for Servo motors
-#include "GSM_Setting.h" // custom library header for GSM_Module.
+#include "Com_Config.h" // custom library header for GSM_Module.
 #include "mainTemplate.h"
 
 /*ServoMotor  *myServo1, *myServo2; */
@@ -10,13 +10,13 @@ int servoPos[SERVO_COUNT]; //using in publish positions (monitor)
 
 int getPos[SERVO_COUNT]; //using in control
 char *posName[] ={"b","j1","j2","fe","j3","j4"};
-String recentCmsg = "hello";
+String recentCmsg = "c";
 void setup() {
   Serial.begin(BAUD_RATE);
   delay(10);
-  Serial.println("setup begin...");
-  
-  SerialSIM.begin(SIM_BAUD_RATE, SERIAL_8N1, (int8_t) RXD, (int8_t) TXD);
+  Serial.println(F("setup begin..."));
+
+  SerialSIM.begin(SIM_BAUD_RATE);
   modem.setNetworkMode(NETWORK_MODE); // 38-nbiot 13-gsm
 //  modem.setPreferredMode(2);  // only for nbiot
   modem.getModemName();
@@ -77,15 +77,15 @@ void loop() {
       hasInitMonitor = true;
     }
     for(int i=0; i<SERVO_COUNT; i++){
-      Serial.print("myServo ");
+      Serial.print(F("myServo "));
       Serial.print(i+1);
-      Serial.print(" Pos : ");
-      servoPos[i] = (int)servo_list[i]->cur_Pos();
+      Serial.print(F(" Pos : "));
+      servoPos[i] = (int)servo_list[i]->cur_Pos(servo_range[i][0],servo_range[i][1]);
       Serial.println(servoPos[i]);
     }
     
-    if(SERVO_COUNT == 1){
-      sendRAPosition(servoPos[0],0,0,0,0,0);
+    if(SERVO_COUNT == 2){
+      sendRAPosition(servoPos[0],servoPos[1],0,0,0,0);
     }else if(SERVO_COUNT == 4){
       sendRAPosition(servoPos[0],servoPos[1],servoPos[2],0,0,servoPos[3]); //b,j1,j2,fe
     }else if (SERVO_COUNT == 6){
@@ -117,16 +117,8 @@ void loop() {
         Serial.println(getPos[i]);
         servo_list[i]->control(getPos[i]);
       }
-      Serial.println("*************");
+      Serial.println(F("*************"));
       recentCmsg = getmsg;
     }
-         
-//    if(prePos != curPos){
-//    Serial.print(curPos);
-      
-//    }
   }
-
-  
- 
 }

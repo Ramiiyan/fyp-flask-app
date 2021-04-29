@@ -10,46 +10,21 @@ int servoPos[SERVO_COUNT]; //using in publish positions (monitor)
 
 int getPos[SERVO_COUNT]; //using in control
 char *posName[] ={"b","j1","j2","fe","j3","j4"};
-String recentCmsg = "hello";
+String recentCmsg = "c";
+
 void setup() {
   Serial.begin(BAUD_RATE);
-  delay(10);
-  Serial.println("setup begin...");
-  
-  SerialSIM.begin(SIM_BAUD_RATE, SERIAL_8N1, (int8_t) RXD, (int8_t) TXD);
-  modem.setNetworkMode(NETWORK_MODE); // 38-nbiot 13-gsm
-//  modem.setPreferredMode(2);  // only for nbiot
-  modem.getModemName();
-  Serial.println(modem.getModemInfo());
-  Serial.println(modem.getIMEI());
-  modem.restart();
-  delay(2000);
-  Serial.println(F("Finding Network..."));
-  if (!modem.waitForNetwork()) {
-    Serial.println(F("Network Fail"));
-    while (true);
-  }else {
-    Serial.println(F("Network identified."));
-    Serial.print(F("Signal Strength : "));
-    Serial.println(modem.getSignalQuality());
-    
-    if (!modem.gprsConnect(GSM_APN, "", "")) {
-      Serial.println(F("GPRS Fail"));
-    }else {
-      Serial.println(F("GPRS Connected."));
-      Serial.println(getCPSI());
-      mqtt.begin(MQTT_HOST, MQTT_PORT,client);
-      mqtt.onMessage(messageReceived);
-    }
-  }
-
+  Serial.println(F("setup begin..."));
+  setup_wifi();
+  delay(1000);
+  mqtt.begin(MQTT_HOST, MQTT_PORT,espClient);
+  mqtt.onMessage(messageReceived);
+  delay(200);
   /*Servo Intializing */ 
   for(int i=0; i<SERVO_COUNT; i++ ){
     Serial.print(F("Servo Motor - "));
     Serial.println(i+1);
     servo_list[i] = new ServoMotor(servo_DPins[i],servo_APins[i]);
-    
-//    servo_list[i]->calibrate_Range(0,180);
     servo_list[i]->calibrate_Range(servo_range[i][0],servo_range[i][1]); //[0]- min, [1]- max
     delay(100);
   }
@@ -64,7 +39,6 @@ void loop() {
     delay(100);
   }
   delay(1000);
-  
   if(action == 0){  // publish mode (monitor) (transmit current position to Platform)
     hasInitControl = false;
     if(!hasInitMonitor){
@@ -80,7 +54,7 @@ void loop() {
       Serial.print("myServo ");
       Serial.print(i+1);
       Serial.print(" Pos : ");
-      servoPos[i] = (int)servo_list[i]->cur_Pos();
+      servoPos[i] = (int)servo_list[i]->cur_Pos(servo_range[i][0],servo_range[i][1]);
       Serial.println(servoPos[i]);
     }
     
@@ -117,14 +91,9 @@ void loop() {
         Serial.println(getPos[i]);
         servo_list[i]->control(getPos[i]);
       }
-      Serial.println("*************");
+      Serial.println(F("*************"));
       recentCmsg = getmsg;
     }
-         
-//    if(prePos != curPos){
-//    Serial.print(curPos);
-      
-//    }
   }
 
   

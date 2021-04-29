@@ -2,58 +2,61 @@
 #include <Arduino.h>
 #include <MQTT.h>
 #include <TinyGsmClient.h>
-
+#include <SoftwareSerial.h> //apply for Arduino UNO
 #include "ServoMotor.h"
 
-#define PUB_TOPIC           "tester2/tesingdev2/v3/common"      // "tester2/tesingdev2/v3/common"
-#define SUB_TOPIC           "sub/1119/tester2/tesingdev2/v3/pub"      // "sub/1119/tester2/tesingdev2/v3/pub"
+#define PUB_TOPIC           {{mqtt_setting.pub_topic}}      // "tester2/tesingdev2/v3/common"
+#define SUB_TOPIC           {{mqtt_setting.sub_topic}}      // "sub/1119/tester2/tesingdev2/v3/pub"
 
-#define MQTT_USERNAME       "tester2-tesingdev2-v3_3220"  // "tester2-tesingdev2-v3_3220"
-#define MQTT_PASSWORD       "1572435365_3220"  // "1572435365_3220"
-#define MQTT_HOST           "mqtt.iot.ideamart.io"      // "mqtt.iot.ideamart.io"
-#define MQTT_PORT           1883      // 1883
+#define MQTT_USERNAME       {{mqtt_setting.mqtt_username}}  // "tester2-tesingdev2-v3_3220"
+#define MQTT_PASSWORD       {{mqtt_setting.mqtt_password}}  // "1572435365_3220"
+#define MQTT_HOST           {{mqtt_setting.mqtt_host}}      // "mqtt.iot.ideamart.io"
+#define MQTT_PORT           {{mqtt_setting.mqtt_port}}      // 1883
 
-#define BAUD_RATE           115200          // 115200
-#define SIM_BAUD_RATE       9600         // 9600
-#define TXD                 16     // 16    //TXD
-#define RXD                 17     // 17    //RXD
+#define BAUD_RATE           {{serial_setting.baud_rate}}          // 115200
+#define SIM_BAUD_RATE       {{serial_setting.sim_module}}         // 9600
+//#define TXD                 {{serial_setting.sim_module_Txd}}     // 16    //TXD
+//#define RXD                 {{serial_setting.sim_module_Rxd}}     // 17    //RXD
 
 #define GSM_APN             "dialogbb"
 #define NB_APN              "nbiot"
 #define NETWORK_MODE        13
 
+/* Only applicable for Aruduino Uno */
 //#define ideaBoard_PWRKEY    13
-//#define ideaBoard_RX        8
-//#define ideaBoard_TX        7
+#define ideaBoard_RX        8
+#define ideaBoard_TX        7
 //#define ideaBoard_RST       11
 
-HardwareSerial SerialSIM(2);
+SoftwareSerial SerialSIM(ideaBoard_TX, ideaBoard_RX); // Only for SoftwareSerial
+//HardwareSerial SerialSIM(2);    // Only For ESP, NodeMcu
 TinyGsm modem(SerialSIM);
 TinyGsmClient client(modem);
 MQTTClient mqtt;
 
-String clientId = "";
+char clientId = "";
 String getmsg;
 char setmsg[150];
 
 String control_mode = "{\"action\":\"control\",\"param\":{\"mac\":\"1119\"}}";
 String monitor_mode = "{\"action\":\"monitor\",\"param\":{\"mac\":\"1119\"}}";
 String cpsi;
+byte action = 0;
+
 boolean ConnectToMQTT();
 void sendRAPosition(int b, int j1, int j2, int j3, int j4, int fe);
 //void CallBack(char *t, byte *payload,unsigned int l);
 void messageReceived(String &topic, String &payload);
-
 String getCPSI();
-byte action = 0;
+
 //byte action_value(byte action_val); // publish mode = 0 (default) , subcribe mode = 1 return 0/1
 
 boolean ConnectToMQTT(){
   randomSeed(analogRead(39)); //analog pin 5 used to genarate random number
-  clientId = "TEST-" + String(millis()) + String(random(0, 100000000), HEX);
+  clientId = "TEST-" + char(millis()) + char(random(0, 100000000), HEX);
     Serial.println(clientId);
-  if (!mqtt.connect(clientId.c_str(), MQTT_USERNAME, MQTT_PASSWORD)){
-    Serial.println("MQTT fail");
+  if (!mqtt.connect(clientId, MQTT_USERNAME, MQTT_PASSWORD)){
+    Serial.println(F("MQTT fail"));
     return false;
   }
   Serial.println(SUB_TOPIC);

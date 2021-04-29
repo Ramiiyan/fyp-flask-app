@@ -1,6 +1,4 @@
-# import io
-# from zipfile import ZipFile
-# import os
+import os
 import shutil
 from flask import Flask, render_template, request, json, send_file
 from flask.json import jsonify
@@ -39,10 +37,19 @@ def specification():
     # select firmware based on microController type & connectivity module
     src = 'firmwareTemplates/ServoReadHardwareTrial_ESP32_multiservo_SimModule'
     dest = 'output_generated_firmware/firmware_v1.0/main'
-    firmwareGenerator.select_template(src, dest)
 
     print(f'Raw data: {request.get_json()}')
     robot_model = RoboticArm.json_to_obj(request.get_json())
+
+    if robot_model.micro_c != "Arduino UNO R3" and robot_model.com_module == "WiFi":
+        print("ESP-WiFi Selected.")
+        src = 'firmwareTemplates/ServoReadHardwareTrial_ESP32_multiservo_Wi-Fi'
+    elif robot_model.micro_c == "Arduino UNO R3" and robot_model.com_module == "SIMCOM 7000":
+        print("UNO-SIM7000C Selected.")
+        src = 'firmwareTemplates/ServoReadHardwareTrial_uno_multiservo_SimModule'
+
+    firmwareGenerator.select_template(src, dest)
+
     print(f'DOF: {robot_model.dof}')
     print("***************************")
     servo = Servo.json_to_obj(robot_model.dof_row_obj)
@@ -76,6 +83,10 @@ def specification():
         firmwareGenerator.map_of_spec_val["mqtt_setting"]["pub_topic"] = str(mqtt_config.pub_topic)
         firmwareGenerator.map_of_spec_val["mqtt_setting"]["sub_topic"] = str(mqtt_config.sub_topic)
         print(firmwareGenerator.map_of_spec_val["mqtt_setting"])
+
+    if wifi.username is not None:
+        firmwareGenerator.map_of_spec_val["wifi_setting"]["username"] = str(wifi.username)
+        firmwareGenerator.map_of_spec_val["wifi_setting"]["password"] = str(wifi.password)
     # print("robot:" + str(robot_model.dof))
     # print("dict val:" + str(firmwareGenerator.map_of_spec_val["servo_count_dof"]))
 
@@ -85,8 +96,14 @@ def specification():
     generated_package = "output_generated_firmware/firmware_v1.0"
     shutil.make_archive("output_zip/firmware_v1.0", 'zip', generated_package)
     f = open('output_zip/firmware_v1.0.zip', 'rb')
+    remove_dest()
     return f.read()
 
+
+def remove_dest():
+    rmv_dir = 'output_generated_firmware/firmware_v1.0/main'
+    for f in os.listdir(rmv_dir):
+        os.remove(os.path.join(rmv_dir, f))
 
 @mqtt.on_connect()
 def handle_connect(client, userdata, flags, rc):

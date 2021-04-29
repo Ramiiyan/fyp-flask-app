@@ -61,27 +61,6 @@ boolean ConnectToMQTT(){
   return mqtt.connected();
 }
 
-//byte action(byte action_val){
-//  return 0; // tramsit_mode by default.  
-//}
-
-//void CallBack(char *t, byte *payload, unsigned int l){
-//  Serial.println(F("******************"));
-//  for (unsigned int i = 0; i < l; i++){
-//    getmsg[i] = (char)payload[i];
-//  }
-//  if (receive_mode == getmsg){
-//    action = 1;
-//    Serial.println(F("Receive_Mode Activated"));
-//    Serial.println(getmsg);
-//
-//  }else if (transmit_mode == getmsg){
-//    action = 0;
-//    Serial.println(F("Transmit_Mode Activated"));
-//  }
-//  delay(500);
-//  memset(getmsg, 0, sizeof(getmsg));
-//}
 void messageReceived(String &topic, String &payload) {
 //  Serial.println("incoming: " + topic + " - " + payload);
   

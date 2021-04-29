@@ -23,7 +23,7 @@ class ServoMotor {
     void switch_To_control();
     void switch_To_monitor();
     void calibrate_Range(int d_of_min, int d_of_max);
-    long cur_Pos();
+    long cur_Pos(int d_of_min, int d_of_max);
     void control(int pos);
     
 };

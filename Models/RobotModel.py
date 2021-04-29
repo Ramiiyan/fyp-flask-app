@@ -56,8 +56,8 @@ class ServoRange:
 
 class Wifi:
     def __init__(self, username, password):
-        self.username = username
-        self.password = password
+        self.username = f'"{username}"'
+        self.password = f'"{password}"'
 
     @classmethod
     def json_to_obj(cls, wifi_json):

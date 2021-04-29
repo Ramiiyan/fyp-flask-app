@@ -51,9 +51,9 @@ void ServoMotor::calibrate_Range(int d_of_min, int d_of_max){
 
 }
 
-long ServoMotor::cur_Pos(){
+long ServoMotor::cur_Pos(int d_of_min, int d_of_max){
   
-  return map(analogRead(servo_AIpin), servo_Range_Min, servo_Range_Max, 0, 180);
+  return map(analogRead(servo_AIpin), servo_Range_Min, servo_Range_Max, d_of_min, d_of_max);
 }
 void ServoMotor::control(int pos){
   this->servo_Obj.attach(servo_DIOpin);

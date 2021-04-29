@@ -17,7 +17,7 @@ map_of_spec_val = {
     "serial_setting": {
         "baud_rate": 115200,
         "sim_module": 9600,
-        "wifi_module": 9600,
+        "wifi_module": 9600,   # For External
         "sim_module_Txd": 16,  # IN ESP32 RX pin
         "sim_module_Rxd": 17,  # IN ESP32 TX pin
     },
@@ -48,15 +48,20 @@ map_of_spec_val = {
 
 
 def select_template(template_src, generate_dest):
+    print('Template_Src:'+template_src)
+    print('Template_Dest:'+generate_dest)
+    f_name = template_src.split("/")
+    main_file_name = f_name[1]+'.ino'
+    print('Template_Dest_File_Name:'+main_file_name)
     src_files = os.listdir(template_src)
     for file_name in src_files:
         full_file_name = os.path.join(template_src, file_name)
         if os.path.isfile(full_file_name):
             shutil.copy(full_file_name, generate_dest)
     if os.path.isfile(generate_dest + '/main.ino'):
-        os.remove(r''+generate_dest+'/ServoReadHardwareTrial_ESP32_multiservo_SimModule.ino')
+        os.remove(r''+generate_dest+'/'+main_file_name)
     else:
-        os.rename(r''+generate_dest+'/ServoReadHardwareTrial_ESP32_multiservo_SimModule.ino', r'' +
+        os.rename(r''+generate_dest+'/'+main_file_name, r'' +
                   generate_dest + '/main.ino')
 
 
@@ -71,7 +76,7 @@ def generate_firmware():
     env = Environment(loader=loader)
 
     # header files of the firmware structure.
-    template_headers = ["MainTemplate.h", "GSM_Setting.h"]
+    template_headers = ["MainTemplate.h", "Com_Config.h"]
     # assign rendered specification to firmware template
     for template in template_headers:
         firmware_template_main = env.get_template(template)
